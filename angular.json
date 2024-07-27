@@ -25,8 +25,8 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/assets/bootstrap/bootstrap.min.scss",
-              "src/styles.scss"
+              "src/assets/bootstrap/bootstrap.min.css",
+              "src/styles.css"
             ],
             "scripts": [
               "src/assets/bootstrap/popper.js",
@@ -94,7 +94,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
