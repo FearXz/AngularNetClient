@@ -32,7 +32,7 @@ export class RegistrationForm implements OnInit {
         confermaPassword: ['', [Validators.required, confirmPasswordValidator]],
         indirizzi: [
           '',
-          [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')],
+          [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')],
         ],
         cap: [
           '',

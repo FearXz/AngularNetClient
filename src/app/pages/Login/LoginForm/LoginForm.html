@@ -12,7 +12,11 @@
     <a routerLink="/login/azienda" class="link">
       Sei un azienda ? clicca qui !</a
     >
-    <form class="pt-lg-5 pt-md-4 py-3">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="pt-lg-5 pt-md-4 py-3"
+    >
       <div class="row">
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -50,26 +54,28 @@
           <div
             *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
           >
-            <small class="text-danger">CAP non valido</small>
+            <small class="text-danger">Password Obbligatoria</small>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12 text-center pt-6">
+          <button
+            type="submit"
+            class="rounded-0 btn btn-leaf-500 text-white button-border-success fw-semibold"
+          >
+            ACCEDI
+          </button>
+          <span class="d-lg-inline-block d-block px-2 py-lg-0 py-2"
+            >oppure</span
+          >
+          <button
+            class="rounded-0 btn btn-warning text-white button-border-warning fw-semibold"
+          >
+            RESETTA PASSWORD
+          </button>
+        </div>
+      </div>
     </form>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12 text-center pt-6">
-    <button
-      type="submit"
-      class="rounded-0 btn btn-leaf-500 text-white button-border-success fw-semibold"
-    >
-      ACCEDI
-    </button>
-    <span class="d-lg-inline-block d-block px-2 py-lg-0 py-2">oppure</span>
-    <button
-      class="rounded-0 btn btn-warning text-white button-border-warning fw-semibold"
-    >
-      RESETTA PASSWORD
-    </button>
   </div>
 </div>
