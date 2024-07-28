@@ -1,11 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: '[component="LoginForm"]',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './LoginForm.html',
 })
-export class LoginForm {
-  title = 'LOGIN';
+export class LoginForm implements OnInit {
+  loginForm: FormGroup = new FormGroup({});
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
+  }
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      console.log('Form Submitted!', this.loginForm.value);
+    }
+  }
 }
