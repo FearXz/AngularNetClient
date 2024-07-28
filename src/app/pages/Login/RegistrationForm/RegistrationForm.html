@@ -4,7 +4,11 @@
     <a routerLink="/login/azienda" class="link"
       >Sei un azienda ? clicca qui !</a
     >
-    <form class="pt-lg-5 pt-md-4 py-3">
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="onSubmit()"
+      class="pt-lg-5 pt-md-4 py-3"
+    >
       <div class="row">
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -12,9 +16,14 @@
             class="form-control rounded-0 focus"
             id="floatingNameRegister"
             placeholder="name@example.com"
-            name="Email"
+            formControlName="nome"
           />
           <label for="floatingNameRegister" class="mb-3">Nome</label>
+          <div
+            *ngIf="registrationForm.get('nome')?.invalid && registrationForm.get('nome')?.touched"
+          >
+            <small class="text-danger">Nome non valido</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -22,9 +31,14 @@
             class="form-control rounded-0 focus"
             id="floatingCognomeRegister"
             placeholder="name@example.com"
-            name="Cognome"
+            formControlName="cognome"
           />
           <label for="floatingNameRegister" class="mb-3">Cognome</label>
+          <div
+            *ngIf="registrationForm.get('cognome')?.invalid && registrationForm.get('cognome')?.touched"
+          >
+            <small class="text-danger">Cognome non valido</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xxl-6">
           <input
@@ -32,9 +46,14 @@
             class="form-control rounded-0 focus"
             id="floatingCellulareRegister"
             placeholder="name@example.com"
-            name="Cellulare"
+            formControlName="cellulare"
           />
           <label for="floatingCellulareRegister" class="mb-3">Cellulare</label>
+          <div
+            *ngIf="registrationForm.get('cellulare')?.invalid && registrationForm.get('cellulare')?.touched"
+          >
+            <small class="text-danger">Cellulare non valido</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xxl-6">
           <input
@@ -42,9 +61,14 @@
             class="form-control rounded-0 focus"
             id="floatingEmailRegister"
             placeholder="name@example.com"
-            name="Email"
+            formControlName="email"
           />
           <label for="floatingEmailRegister" class="mb-3">Email</label>
+          <div
+            *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+          >
+            <small class="text-danger">Email non valida</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -52,9 +76,14 @@
             class="form-control rounded-0 focus"
             id="floatingPasswordRegister"
             placeholder="name@example.com"
-            name="Password"
+            formControlName="password"
           />
           <label for="floatingPasswordRegister" class="mb-3">Password</label>
+          <div
+            *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched"
+          >
+            <small class="text-danger">Password non valida</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -62,11 +91,16 @@
             class="form-control rounded-0 focus"
             id="floatingConfermaPasswordRegister"
             placeholder="name@example.com"
-            name="ConfermaPassword"
+            formControlName="confermaPassword"
           />
           <label for="floatingConfermaPasswordRegister" class="mb-3"
             >Conferma Password</label
           >
+          <div
+            *ngIf="registrationForm.errors?.['confermaPassword'] && registrationForm.get('confermaPassword')?.touched"
+          >
+            <small class="text-danger">Password Sbagliata</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12">
           <input
@@ -74,11 +108,16 @@
             class="form-control rounded-0 focus"
             id="floatingIndirizzoRegister"
             placeholder="name@example.com"
-            name="Indirizzi"
+            formControlName="indirizzi"
           />
           <label for="floatingIndirizzoRegister" class="mb-3">
             Indirizzo
           </label>
+          <div
+            *ngIf="registrationForm.get('indirizzi')?.invalid && registrationForm.get('indirizzi')?.touched"
+          >
+            <small class="text-danger">Indirizzo non valido</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -86,9 +125,14 @@
             class="form-control rounded-0 focus"
             id="floatingCAPRegister"
             placeholder="name@example.com"
-            name="CAP"
+            formControlName="cap"
           />
           <label for="floatingCAPRegister" class="mb-3"> CAP </label>
+          <div
+            *ngIf="registrationForm.get('cap')?.invalid && registrationForm.get('cap')?.touched"
+          >
+            <small class="text-danger">CAP non valido</small>
+          </div>
         </div>
         <div class="form-floating mb-3 col-12 col-xl-6">
           <input
@@ -96,9 +140,14 @@
             class="form-control rounded-0 focus"
             id="floatingCittaRegister"
             placeholder="name@example.com"
-            name="Citta"
+            formControlName="citta"
           />
           <label for="floatingCittaRegister" class="mb-3"> Citta </label>
+          <div
+            *ngIf="registrationForm.get('citta')?.invalid && registrationForm.get('citta')?.touched"
+          >
+            <small class="text-danger">città non valida</small>
+          </div>
         </div>
       </div>
       <div class="row">
