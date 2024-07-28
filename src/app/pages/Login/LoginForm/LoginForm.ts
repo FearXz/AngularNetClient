@@ -18,15 +18,22 @@ export class LoginForm implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-    });
+  scrollToDiv(event: Event, divId: string) {
+    event.preventDefault();
+    const element = document.getElementById(divId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log('Form Submitted!', this.loginForm.value);
     }
+  }
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 }

@@ -2,12 +2,12 @@
   <div class="offset-lg-1 col-lg-10 col-12 text-center">
     <h2 className="h1 font-breef">
       Accedi
-      <a
-        href="#col-registration-form"
+      <h2
         class="d-md-none d-inline text-success text-decoration-none"
+        (click)="scrollToDiv($event, 'col-registration-form')"
       >
         o Registrati
-      </a>
+      </h2>
     </h2>
     <a routerLink="/login/azienda" class="link">
       Sei un azienda ? clicca qui !</a
