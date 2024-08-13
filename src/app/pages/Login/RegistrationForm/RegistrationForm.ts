@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: '[component="RegistrationForm"]',
+  selector: 'RegistrationForm',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './RegistrationForm.html',

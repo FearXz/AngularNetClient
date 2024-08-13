@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: '[component="LoginForm"]',
+  selector: 'LoginForm',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './LoginForm.html',

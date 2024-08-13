@@ -6,7 +6,7 @@ import { RegistrationForm } from './RegistrationForm/RegistrationForm';
   selector: 'LoginPage',
   standalone: true,
   imports: [LoginForm, RegistrationForm],
-  templateUrl: './Login.component.html',
+  templateUrl: './LoginPage.html',
 })
 export class LoginPage {
   title = 'LOGIN';
