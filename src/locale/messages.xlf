@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="it" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="2711729560667882574" datatype="html">
-        <source>ORDER BUSINESS</source>
+      <trans-unit id="8237670176293570699" datatype="html">
+        <source>ORDINA BUSINESS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mainComponents/header/Header.html</context>
           <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3728311211887134377" datatype="html">
-        <source>BECOME RIDER</source>
+      <trans-unit id="4509111339546770599" datatype="html">
+        <source>DIVENTA RIDER</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mainComponents/header/Header.html</context>
           <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1149466088236074331" datatype="html">
-        <source>ITALY</source>
+      <trans-unit id="272927705137450065" datatype="html">
+        <source>ITALIA</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mainComponents/header/Header.html</context>
           <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3892466420159784650" datatype="html">
-        <source>ENGLISH</source>
+      <trans-unit id="861655118217739623" datatype="html">
+        <source>INGLESE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mainComponents/header/Header.html</context>
           <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2255738207434422096" datatype="html">
-        <source>LOGIN</source>
+      <trans-unit id="4691904708737492486" datatype="html">
+        <source>ACCEDI</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mainComponents/header/Header.html</context>
           <context context-type="linenumber">60,61</context>
