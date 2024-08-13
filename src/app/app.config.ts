@@ -3,14 +3,14 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     { provide: JWT_OPTIONS, useValue: {} },
-    /*     JwtHelperService,
     provideRouter(routes),
+    JwtHelperService /*
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       })
-    ), */
+    ), */,
   ],
 };
