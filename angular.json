@@ -5,9 +5,9 @@
   "projects": {
     "AngularNetClient": {
       "i18n": {
-        "sourceLocale": "it",
+        "sourceLocale": "en-US",
         "locales": {
-          "en-US": "src/locale/messages.en.xlf"
+          "it": "src/locale/messages.it.xlf"
         }
       },
       "projectType": "application",
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "localize": ["en-US"],
+            "localize": ["it"],
             "outputPath": "dist/angular-net-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
