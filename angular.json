@@ -5,7 +5,7 @@
   "projects": {
     "AngularNetClient": {
       "i18n": {
-        "sourceLocale": "it-IT",
+        "sourceLocale": "it",
         "locales": {
           "en-US": "src/locale/messages.en.xlf"
         }
