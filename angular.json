@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "AngularNetClient": {
+      "i18n": {
+        "sourceLocale": "it-IT",
+        "locales": {
+          "en-US": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": ["en-US"],
             "outputPath": "dist/angular-net-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -25,8 +32,8 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/assets/bootstrap/bootstrap.min.css",
-              "src/styles.css"
+              "src/assets/bootstrap/bootstrap.min.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "src/assets/bootstrap/popper.js",
