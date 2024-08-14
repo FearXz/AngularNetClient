@@ -36,10 +36,8 @@ export class AuthService {
     this._auth.set(auth);
   }
 
-  login(email: string, password: string): void {
-    const loginRequest: LoginRequest = { email, password };
-
-    firstValueFrom(this.http.post<LoginResponse>(this.loginUrl, loginRequest))
+  login(login: LoginRequest): void {
+    firstValueFrom(this.http.post<LoginResponse>(this.loginUrl, login))
       .then((response) => {
         this._auth.set(response);
       })

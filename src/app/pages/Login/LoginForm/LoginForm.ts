@@ -6,6 +6,8 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { AuthService } from '../../../auth/auth.service';
+import { LoginRequest } from '../../../auth/AuthInterfaces/LoginRequest';
 
 @Component({
   selector: 'LoginForm',
@@ -16,7 +18,7 @@ import {
 export class LoginForm implements OnInit {
   loginForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private authSvc: AuthService) {}
 
   scrollToDiv(event: Event, divId: string) {
     event.preventDefault();
@@ -27,7 +29,11 @@ export class LoginForm implements OnInit {
   }
   onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
+      let logReq: LoginRequest = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.authSvc.login(logReq);
     }
   }
   ngOnInit(): void {
