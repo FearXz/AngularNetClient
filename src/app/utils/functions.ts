@@ -1,5 +1,5 @@
-import { CartProduct, LocaleIdResponse } from '../interfaces/interfaces';
 import { setHours, setMinutes, setSeconds, addDays } from 'date-fns';
+import { CartProduct, LocaleIdResponse } from '../interfaces/interfaces';
 
 export function haversineDistance(
   lat1: number,

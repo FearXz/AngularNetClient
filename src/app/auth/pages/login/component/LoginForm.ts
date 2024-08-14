@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import {} from '@angular/common/http';
 import { AuthService } from '../../../auth.service';
-import { LoginRequest } from '../../../DTOs/LoginRequest';
+import { LoginRequest } from '../../../Interfaces/LoginRequest';
 
 @Component({
   selector: 'LoginForm',

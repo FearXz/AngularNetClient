@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { PersistentSvc } from '../services/persistentSvc.service';
 import { environment } from '../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LoginResponse } from './DTOs/LoginResponse';
-import { LoginRequest } from './DTOs/LoginRequest';
+import { LoginResponse } from './Interfaces/LoginResponse';
+import { LoginRequest } from './Interfaces/LoginRequest';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
