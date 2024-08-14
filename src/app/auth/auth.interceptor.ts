@@ -1,63 +1,61 @@
-import { Injectable } from '@angular/core';
 import {
-  HttpInterceptor,
   HttpRequest,
-  HttpHandler,
   HttpEvent,
+  HttpInterceptorFn,
   HttpErrorResponse,
+  HttpHandlerFn,
 } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authSvc: AuthService, private router: Router) {}
+export const authInterceptor: HttpInterceptorFn = (
+  req: HttpRequest<any>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<any>> => {
+  const authSvc = inject(AuthService);
+  const router = inject(Router);
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    const auth = this.authSvc.auth();
+  const auth = authSvc.auth();
 
-    let authReq = req;
-    if (auth) {
-      authReq = req.clone({
-        setHeaders: { Authorization: `Bearer ${auth.accessToken}` },
-      });
-    }
-
-    return next.handle(authReq).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 && auth?.refreshToken) {
-          return this.authSvc
-            .refreshToken({
-              accessToken: auth.accessToken,
-              refreshToken: auth.refreshToken,
-            })
-            .pipe(
-              switchMap((refResp) => {
-                if (refResp) {
-                  this.authSvc.setAuth(refResp);
-                  const clonedReq = req.clone({
-                    setHeaders: {
-                      Authorization: `Bearer ${refResp.accessToken}`,
-                    },
-                  });
-                  return next.handle(clonedReq);
-                }
-                return throwError(() => new Error(error.message));
-              }),
-              catchError((error) => {
-                this.authSvc.logout();
-                this.router.navigate(['/login']);
-                return throwError(() => new Error(error.message));
-              })
-            );
-        }
-        return throwError(() => new Error(error.message));
-      })
-    );
+  let authReq = req;
+  if (auth) {
+    authReq = req.clone({
+      setHeaders: { Authorization: `Bearer ${auth.accessToken}` },
+    });
   }
-}
+
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401 && auth?.refreshToken) {
+        return authSvc
+          .refreshToken({
+            accessToken: auth.accessToken,
+            refreshToken: auth.refreshToken,
+          })
+          .pipe(
+            switchMap((refResp) => {
+              if (refResp) {
+                authSvc.setAuth(refResp);
+                const clonedReq = req.clone({
+                  setHeaders: {
+                    Authorization: `Bearer ${refResp.accessToken}`,
+                  },
+                });
+                return next(clonedReq);
+              }
+              return throwError(() => new Error(error.message));
+            }),
+            catchError((innerError) => {
+              authSvc.logout();
+              router.navigate(['/login']);
+              return throwError(() => new Error(innerError.message));
+            })
+          );
+      }
+      return throwError(() => new Error(error.message));
+    })
+  );
+};
