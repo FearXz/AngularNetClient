@@ -1,1 +1,3 @@
-export interface Store {}
+import { LoginResponse } from './Interfaces';
+
+export interface PStore {}

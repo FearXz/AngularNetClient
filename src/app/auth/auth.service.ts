@@ -1,29 +1,30 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PersistentSvc } from '../services/persistentSvc.service';
+
 import { environment } from '../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LoginResponse } from './Interfaces/LoginResponse';
-import { LoginRequest } from './Interfaces/LoginRequest';
+import { LoginResponse } from './AuthInterfaces/LoginResponse';
+import { LoginRequest } from './AuthInterfaces/LoginRequest';
 import { firstValueFrom } from 'rxjs';
+import { PAUTH } from '../utils/const';
+import { PersistService } from '../services/persistService.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  _auth: WritableSignal<LoginResponse | null>;
+  private _auth = this.persistSvc.PSignal<LoginResponse | null>(PAUTH, null);
+
   loginUrl: string = `${environment.apiUrl}api/Auth/login`;
-  registerUrl: string = `${environment.apiUrl}register`;
+  registerUrl: string = `${environment.apiUrl}api/Auth/register`;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private persistentSvc: PersistentSvc,
+    private persistSvc: PersistService,
     private jwtHelper: JwtHelperService
-  ) {
-    this._auth = this.persistentSvc.PSignal<LoginResponse | null>('auth', null);
-  }
+  ) {}
 
   // Effettua il login
   login(email: string, password: string): void {
