@@ -26,7 +26,6 @@ export const authInterceptor: HttpInterceptorFn = (
       setHeaders: { Authorization: `Bearer ${auth.accessToken}` },
     });
   }
-
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401 && auth?.refreshToken) {
