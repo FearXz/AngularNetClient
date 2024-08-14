@@ -1,23 +1,25 @@
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable, Signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
 import { environment } from '../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginResponse } from './AuthInterfaces/LoginResponse';
 import { LoginRequest } from './AuthInterfaces/LoginRequest';
-import { firstValueFrom } from 'rxjs';
-import { PAUTH } from '../utils/const';
+import { firstValueFrom, Observable } from 'rxjs';
+import { AUTH } from '../utils/const';
 import { PersistService } from '../services/persistService.service';
+import { RefreshRequest } from './AuthInterfaces/Refreshequest';
+import { RefreshResponse } from './AuthInterfaces/RefreshResponse';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private _auth = this.persistSvc.PSignal<LoginResponse | null>(PAUTH, null);
+  private _auth = this.persistSvc.PSignal<LoginResponse | null>(AUTH, null);
 
   loginUrl: string = `${environment.apiUrl}api/Auth/login`;
   registerUrl: string = `${environment.apiUrl}api/Auth/register`;
+  refreshUrl: string = `${environment.apiUrl}api/Auth/refreshToken`;
 
   constructor(
     private http: HttpClient,
@@ -26,7 +28,14 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {}
 
-  // Effettua il login
+  get auth(): Signal<LoginResponse | null> {
+    return this._auth.asReadonly();
+  }
+
+  setAuth(auth: LoginResponse) {
+    this._auth.set(auth);
+  }
+
   login(email: string, password: string): void {
     const loginRequest: LoginRequest = { email, password };
 
@@ -40,10 +49,19 @@ export class AuthService {
       .finally(() => {});
   }
 
-  // Effettuare il logout
+  refreshToken(
+    refreshToken: RefreshRequest
+  ): Observable<RefreshResponse | undefined> {
+    return this.http.post<RefreshResponse>(
+      `${this.refreshUrl}api/Auth/refreshToken`,
+      {
+        refreshToken,
+      }
+    );
+  }
+
   logout(): void {
     this._auth.set(null);
-    this.router.navigate(['/login']);
   }
 
   // metodo per verificare se l'utente è loggato

@@ -18,4 +18,4 @@ export const ATTIVATI: string = 'ATTIVATI';
 export const DISATTIVATI: string = 'DISATTIVATI';
 
 /*Store Object*/
-export const PAUTH: string = 'auth';
+export const AUTH = 'auth';
