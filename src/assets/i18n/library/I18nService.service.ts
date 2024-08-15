@@ -1,8 +1,5 @@
 import { Injectable, WritableSignal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 import { PersistService } from '../../../app/utils/persistService.service';
 import { Lang } from './language';
 import { Store } from '../../../app/utils/Store';
@@ -15,8 +12,7 @@ export class I18nService {
 
   constructor(
     private translate: TranslateService,
-    private persistSvc: PersistService,
-    private http: HttpClient
+    private persistSvc: PersistService
   ) {
     this.translate.setDefaultLang(Lang.IT);
     this.translate.use(this._currLang());
