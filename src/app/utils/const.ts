@@ -1,7 +1,7 @@
 /**Role */
 export const ADMIN: string = 'ADMIN';
-export const UTENTE: string = 'USER';
-export const AZIENDA: string = 'COMPANY';
+export const USER: string = 'USER';
+export const COMPANY: string = 'COMPANY';
 
 /**Store Object*/
 export const AUTH = 'auth';

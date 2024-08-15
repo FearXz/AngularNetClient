@@ -1,6 +1,6 @@
 import { AUTH } from '../utils/const';
-import { LoginResponse } from './Interfaces';
+import { UserData } from './Interfaces';
 
 export interface PStore {
-  [AUTH]: LoginResponse | null;
+  [AUTH]: UserData | null;
 }
