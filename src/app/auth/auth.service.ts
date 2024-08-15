@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginResponse } from './Interfaces/LoginResponse';
 import { LoginRequest } from './Interfaces/LoginRequest';
 import { firstValueFrom, Observable } from 'rxjs';
-import { PersistService } from '../services/persistService.service';
+import { PersistService } from '../utils/persistService.service';
 import { RefreshRequest } from './Interfaces/Refreshequest';
 import { RefreshResponse } from './Interfaces/RefreshResponse';
 import { UserClaims } from './Interfaces/IUserClaims';

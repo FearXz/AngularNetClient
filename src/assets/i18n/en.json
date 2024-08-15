@@ -1,0 +1,64 @@
+{
+  "Header": {
+    "LOGO_ALT": "Logo",
+    "BUILDING_ALT": "Building",
+    "MOPED_ALT": "Moped",
+    "FLAG_ALT": "Flag",
+    "ITALY_FLAG_ALT": "Italian flag",
+    "UK_FLAG_ALT": "UK flag",
+    "CHECK_ALT": "Selected",
+    "USER_ALT": "User",
+    "LIST_ALT": "List",
+    "ORDER_BUSINESS": "Order for business",
+    "BECOME_RIDER": "Become a rider",
+    "LANGUAGE_ITALY": "Italy",
+    "LANGUAGE_ENGLISH": "English",
+    "LOGIN": "Login"
+  },
+  "Footer": {
+    "COPYRIGHT": "All rights reserved",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS_OF_SERVICE": "Terms of Service"
+  },
+  "DownloadApp": {
+    "TITLE": "Download the app",
+    "SUBTITLE": "Available on App Store and Google Play",
+    "APP_STORE_ALT": "Download from App Store",
+    "GOOGLE_PLAY_ALT": "Download from Google Play",
+    "APP_IMAGE_ALT": "App image"
+  },
+  "Hero": {
+    "TITLE": "Welcome to our service",
+    "SUBTITLE": "The best way to start",
+    "PLACEHOLDER": "Search here...",
+    "SEARCH_BUTTON": "Search",
+    "ALT_TEXT": "Representative image"
+  },
+  "HowItWorks": {
+    "TITLE": "How it works",
+    "SUBTITLE": "Follow these simple steps",
+    "STEP_ALT": "Step icon",
+    "STEP1_TITLE": "Find your location",
+    "STEP1_DESCRIPTION": "Use the map to locate yourself.",
+    "STEP2_TITLE": "Choose your meal",
+    "STEP2_DESCRIPTION": "Choose from a variety of restaurants.",
+    "STEP3_TITLE": "Enjoy your meal",
+    "STEP3_DESCRIPTION": "Receive your order directly at home."
+  },
+  "WhatDoYouWant": {
+    "TITLE": "What do you want?",
+    "SUBTITLE": "Our promises",
+    "FIDELITY_ALT": "Fidelity icon",
+    "FIDELITY_TITLE": "Loyalty Program",
+    "FIDELITY_DESCRIPTION": "Earn points with every purchase.",
+    "PROMISE_ALT": "Promise icon",
+    "PROMISE_TITLE": "Our promises",
+    "PROMISE_DESCRIPTION1": "Fast and reliable service.",
+    "PROMISE_DESCRIPTION2": "Guaranteed quality.",
+    "ADVANTAGES_ALT": "Advantages icon",
+    "ADVANTAGES_TITLE": "Exclusive advantages",
+    "ADVANTAGES_DESCRIPTION1": "Special offers for members.",
+    "ADVANTAGES_DESCRIPTION2": "Dedicated customer support.",
+    "ADVANTAGES_DESCRIPTION3": "Free deliveries for orders over 50€."
+  }
+}

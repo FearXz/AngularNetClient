@@ -14,28 +14,36 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <img [src]="currentFlag" class="me-2" />
+          <img [src]="currFlag" class="me-2" />
         </button>
         <ul class="dropdown-menu rounded-0">
           <li
+            (click)="changeLang(IT)"
             class="d-flex justify-content-between align-items-center px-3 py-2"
           >
             <div class="d-flex align-items-center">
               <img src="../../../assets/images/utilities/it.svg" />
+              <span class="ms-2"
+                >{{ 'Header.LANGUAGE_ITALY' | translate }}</span
+              >
             </div>
             <img
-              *ngIf="currentFlag === '../../../assets/images/utilities/it.svg'"
+              *ngIf="currFlag === '../../../assets/images/utilities/it.svg'"
               src="../../../assets/images/utilities/check.svg"
             />
           </li>
           <li
+            (click)="changeLang(EN)"
             class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
           >
             <div class="d-flex align-items-center">
               <img src="../../../assets/images/utilities/en.svg" />
+              <span class="ms-2"
+                >{{ 'Header.LANGUAGE_ENGLISH' | translate }}</span
+              >
             </div>
             <img
-              *ngIf="currentFlag === '../../../assets/images/utilities/en.svg'"
+              *ngIf="currFlag === '../../../assets/images/utilities/en.svg'"
               src="../../../assets/images/utilities/check.svg"
             />
           </li>
@@ -75,29 +83,37 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <img [src]="currentFlag" class="me-2" />
+            <img [src]="currFlag" class="me-2" />
           </button>
 
           <ul class="dropdown-menu rounded-0">
             <li
+              (click)="changeLang(IT)"
               class="d-flex justify-content-between align-items-center px-3 py-2"
             >
               <div class="d-flex align-items-center">
                 <img src="../../../assets/images/utilities/it.svg" />
+                <span class="ms-2"
+                  >{{ 'Header.LANGUAGE_ITALY' | translate }}</span
+                >
               </div>
               <img
-                *ngIf="currentFlag === '../../../assets/images/utilities/it.svg'"
+                *ngIf="currFlag === '../../../assets/images/utilities/it.svg'"
                 src="../../../assets/images/utilities/check.svg"
               />
             </li>
             <li
+              (click)="changeLang(EN)"
               class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
             >
               <div class="d-flex align-items-center">
                 <img src="../../../assets/images/utilities/en.svg" />
+                <span class="ms-2"
+                  >{{ 'Header.LANGUAGE_ENGLISH' | translate }}</span
+                >
               </div>
               <img
-                *ngIf="currentFlag === '../../../assets/images/utilities/en.svg'"
+                *ngIf="currFlag === '../../../assets/images/utilities/en.svg'"
                 src="../../../assets/images/utilities/check.svg"
               />
             </li>

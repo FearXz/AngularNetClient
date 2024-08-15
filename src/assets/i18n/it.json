@@ -1,0 +1,19 @@
+{
+  "Header": {
+    "LOGO_ALT": "Logo",
+    "FLAG_ALT": "Bandiera",
+    "ITALY_FLAG_ALT": "Bandiera italiana",
+    "UK_FLAG_ALT": "Bandiera del Regno Unito",
+    "CHECK_ALT": "Selezionato",
+    "USER_ALT": "Utente",
+    "LANGUAGE_ITALY": "Italiano",
+    "LANGUAGE_ENGLISH": "Inglese",
+    "LOGIN": "Accedi"
+  },
+  "Footer": {
+    "COPYRIGHT": "Tutti i diritti riservati",
+    "PRIVACY_POLICY": "Politica sulla privacy",
+    "TERMS_OF_SERVICE": "Termini di servizio"
+  },
+  "Login": {}
+}
