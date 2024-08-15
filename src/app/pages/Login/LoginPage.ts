@@ -12,6 +12,6 @@ import { Title } from '@angular/platform-browser';
 export class LoginPage {
   title = 'LOGIN';
   constructor(private titleSvc: Title) {
-    this.titleSvc.setTitle('Accedi al tuo account | Take2Me');
+    this.titleSvc.setTitle('Accedi al tuo account  | Take2Me');
   }
 }
