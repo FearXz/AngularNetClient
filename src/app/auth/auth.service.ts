@@ -20,7 +20,7 @@ export class AuthService {
   private _userData = this.persistSvc.PSignal<LoggedUser | null>(AUTH, null);
 
   loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
-  registerUrl: string = `${environment.apiUrl}/api/Auth/register`;
+  registerUrl: string = `${environment.apiUrl}/api/Auth/registerUser`;
   refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshToken`;
 
   constructor(
