@@ -32,7 +32,7 @@ export class I18nService {
 
   loadTranslations(): void {
     const language = this._currLang();
-    const url = `../../../assets/i18n/${language}.json`;
+    const url = `../../../assets/i18n/${this._currLang()}.json`;
 
     firstValueFrom(this.http.get(url))
       .then((translations) => {
