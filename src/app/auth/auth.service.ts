@@ -19,9 +19,9 @@ import { LoggedUser } from './Interfaces/LoggedUser';
 export class AuthService {
   private _userData = this.persistSvc.PSignal<LoggedUser | null>(AUTH, null);
 
-  loginUrl: string = `${environment.apiUrl}api/Auth/login`;
-  registerUrl: string = `${environment.apiUrl}api/Auth/register`;
-  refreshUrl: string = `${environment.apiUrl}api/Auth/refreshToken`;
+  loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
+  registerUrl: string = `${environment.apiUrl}/api/Auth/register`;
+  refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshToken`;
 
   constructor(
     private http: HttpClient,
@@ -30,20 +30,21 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {}
 
-  get userData(): Signal<LoggedUser | null> {
-    return this._userData.asReadonly();
-  }
-
   login(login: LoginRequest): void {
     firstValueFrom(this.http.post<LoginResponse>(this.loginUrl, login))
       .then((resp) => {
         if (!resp) throw new Error('No Claims');
         this.setUserData(resp);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         console.error('Error logging in', error);
       })
       .finally(() => {});
+  }
+
+  logout(): void {
+    this._userData.set(null);
   }
 
   refreshToken(
@@ -57,12 +58,12 @@ export class AuthService {
     );
   }
 
-  logout(): void {
-    this._userData.set(null);
+  get userData(): Signal<LoggedUser | null> {
+    return this._userData.asReadonly();
   }
 
   setUserData(login: LoginResponse): void {
-    let claims: UserClaims = this.getClaims(login);
+    let claims: UserClaims = this.getClaims(login.accessToken);
 
     if (!claims) throw new Error('No Claims');
 
@@ -71,24 +72,28 @@ export class AuthService {
       refreshToken: login.refreshToken,
       userId: claims.userId,
       displayName: claims.displayName,
-      role: claims.role,
     };
 
     this._userData.set(user);
   }
 
-  // metodo per ottenere i claims dell'utente loggato
-  getClaims(login: LoginResponse): UserClaims {
-    const token = login?.accessToken;
-    if (!token) throw new Error('No Token');
+  get userRole(): string {
+    if (!this._userData()) return '';
 
-    let claims = this.jwtHelper.decodeToken(token);
+    let accessToken = this._userData()?.accessToken;
+    let claims: UserClaims = this.getClaims(accessToken || '');
+    return claims.role;
+  }
+
+  getClaims(accessToken: string): UserClaims {
+    let claims = this.jwtHelper.decodeToken(accessToken);
     if (!claims) throw new Error('No Claims');
 
     const decodedToken: UserClaims = {
       userId: claims.nameid,
       displayName: claims.unique_name,
       role: claims.role,
+      jti: claims.jti,
     };
 
     return decodedToken;

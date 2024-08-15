@@ -1,6 +1,12 @@
+/**Role */
 export const ADMIN: string = 'ADMIN';
-export const UTENTE: string = 'UTENTE';
-export const AZIENDA: string = 'AZIENDA';
+export const UTENTE: string = 'USER';
+export const AZIENDA: string = 'COMPANY';
+
+/**Store Object*/
+export const AUTH = 'auth';
+
+/**Constant*/
 export const DASHBOARD: string = 'DASHBOARD';
 export const PROFILO: string = 'PROFILO';
 export const ORDINI: string = 'ORDINI';
@@ -16,6 +22,3 @@ export const CONFIRMED: string = 'CONFERMATI';
 export const TUTTI: string = 'TUTTI';
 export const ATTIVATI: string = 'ATTIVATI';
 export const DISATTIVATI: string = 'DISATTIVATI';
-
-/*Store Object*/
-export const AUTH = 'auth';

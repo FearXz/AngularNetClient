@@ -3,5 +3,4 @@ export interface LoggedUser {
   refreshToken: string;
   userId: string;
   displayName: string;
-  role: string;
 }

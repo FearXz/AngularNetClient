@@ -37,7 +37,7 @@ export const authInterceptor: HttpInterceptorFn = (
           .pipe(
             switchMap((refResp) => {
               if (refResp) {
-                let claims = authSvc.getClaims(refResp);
+                let claims = authSvc.getClaims(refResp.accessToken);
                 authSvc.setUserData(refResp);
                 const clonedReq = req.clone({
                   setHeaders: {
