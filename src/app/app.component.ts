@@ -13,7 +13,5 @@ import { Footer } from './layout/footer/Footer';
 })
 export class AppComponent {
   title = 'App';
-  constructor(private translateSvc: I18nService) {
-    this.translateSvc.loadTranslations();
-  }
+  constructor() {}
 }

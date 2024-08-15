@@ -18,6 +18,7 @@ export class I18nService {
     private persistSvc: PersistService,
     private http: HttpClient
   ) {
+    this.translate.setDefaultLang(Lang.IT);
     this.translate.use(this._currLang());
   }
 
@@ -28,19 +29,5 @@ export class I18nService {
   changeLanguage(language: string) {
     this._currLang.set(language);
     this.translate.use(language);
-  }
-
-  loadTranslations(): void {
-    const language = this._currLang();
-    const url = `../../../assets/i18n/${this._currLang()}.json`;
-
-    firstValueFrom(this.http.get(url))
-      .then((translations) => {
-        this.translate.setTranslation(language, translations, true);
-      })
-      .catch((error) => {
-        console.error(`Error loading translations for language`, error);
-      })
-      .finally(() => {});
   }
 }
