@@ -81,6 +81,11 @@ main {
 .modal-content {
   border-radius: 0 !important;
 }
+
+.form-floating > label {
+  color: #6c757d !important;
+  left: 10px !important;
+}
 /* CSS TRANSITION GROUP*/
 .fade-enter {
   opacity: 0;
