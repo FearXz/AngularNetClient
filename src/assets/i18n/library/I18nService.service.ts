@@ -8,22 +8,22 @@ import { Store } from '../../../app/utils/Store';
   providedIn: 'root',
 })
 export class I18nService {
-  private _currLang = this.persistSvc.PSignal<string>(Store.LANG, Lang.IT);
+  private _language = this.persistSvc.PSignal<string>(Store.LANG, Lang.IT);
 
   constructor(
     private translate: TranslateService,
     private persistSvc: PersistService
   ) {
     this.translate.setDefaultLang(Lang.IT);
-    this.translate.use(this._currLang());
+    this.translate.use(this._language());
   }
 
-  get currLang() {
-    return this._currLang.asReadonly();
+  get language() {
+    return this._language.asReadonly();
   }
 
-  changeLanguage(language: string) {
-    this._currLang.set(language);
+  setLanguage(language: string) {
+    this._language.set(language);
     this.translate.use(language);
   }
 }

@@ -12,7 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './Header.html',
 })
 export class Header {
-  currLang = computed<string>(() => this.translateSvc.currLang());
+  currLang = computed<string>(() => this.translateSvc.language());
   currFlag: string = '';
   IT = Lang.IT;
   EN = Lang.EN;
@@ -25,6 +25,6 @@ export class Header {
   }
 
   changeLang(language: string): void {
-    this.translateSvc.changeLanguage(language);
+    this.translateSvc.setLanguage(language);
   }
 }
