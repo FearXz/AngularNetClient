@@ -1,7 +1,66 @@
 <header class="sticky-top z-3 bg-light section-nav">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3 d-md-none d-flex align-items-center px-sm-3 px-0"></div>
+      <div class="col-3 d-md-none d-flex align-items-center px-sm-3 px-0">
+        <a
+          routerLink="/login"
+          class="btn btn-link btn-lg rounded-0 border-end px-sm-3 px-2 my-1"
+        >
+          <i class="bi bi-person-circle text-gray-800 fs-4"></i>
+        </a>
+        <a
+          routerLink="/contatti"
+          class="btn btn-link text-black text-decoration-none"
+        >
+          <i class="bi bi-chat-dots text-gray-800 fs-4"></i>
+        </a>
+      </div>
+
+      <div class="col-xxl-2 col-md-3 col-7 text-md-start text-center">
+        <a routerLink="/" class="navbar-brand py-md-3 d-inline-block bg-light">
+          <img
+            src="../../../assets/images/logo-official.png"
+            alt="Take2Me.it"
+            className="img-fluid"
+            width="195"
+          />
+        </a>
+      </div>
+      <div
+        class="col-xxl-10 col-md-9 col-2 d-flex justify-content-end align-items-center px-sm-3 px-0"
+      >
+        <div
+          class="d-md-flex d-none align-items-center border-start border-1 fix-h-50"
+        >
+          <a
+            routerLink="/login"
+            class="btn btn-link text-black text-decoration-none"
+          >
+            <i class="bi bi-person-circle text-gray-800 fs-4"></i
+            >&nbsp;&nbsp;ACCEDI
+          </a>
+        </div>
+        <div
+          class="d-md-flex d-none align-items-center border-start border-1 fix-h-50"
+        >
+          <a
+            routerLink="/contatti"
+            class="btn btn-link text-black text-decoration-none"
+          >
+            <i class="bi bi-chat-dots text-gray-800 fs-4"></i> CONTATTI
+          </a>
+        </div>
+        <div class="d-flex align-items-center border-start border-1 fix-h-50">
+          <button class="btn btn-link position-relative">
+            <i class="bi bi-basket3-fill text-green fs-3"></i>
+
+            <span
+              class="position-absolute translate-middle badge rounded-pill bg-leaf-500 total-products-cart"
+            >
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
