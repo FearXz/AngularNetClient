@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
-import { LoginRequest } from '../../../auth/AuthInterfaces/LoginRequest';
+import { LoginRequest } from '../../../auth/Interfaces/LoginRequest';
 
 @Component({
   selector: 'LoginForm',

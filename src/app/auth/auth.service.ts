@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LoginResponse } from './AuthInterfaces/LoginResponse';
-import { LoginRequest } from './AuthInterfaces/LoginRequest';
+import { LoginResponse } from './Interfaces/LoginResponse';
+import { LoginRequest } from './Interfaces/LoginRequest';
 import { firstValueFrom, Observable } from 'rxjs';
 import { AUTH } from '../utils/const';
 import { PersistService } from '../services/persistService.service';
-import { RefreshRequest } from './AuthInterfaces/Refreshequest';
-import { RefreshResponse } from './AuthInterfaces/RefreshResponse';
+import { RefreshRequest } from './Interfaces/Refreshequest';
+import { RefreshResponse } from './Interfaces/RefreshResponse';
 
 @Injectable({
   providedIn: 'root',
