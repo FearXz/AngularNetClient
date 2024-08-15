@@ -8,12 +8,38 @@
         >
           <i class="bi bi-person-circle text-gray-800 fs-4"></i>
         </a>
-        <a
-          routerLink="/contatti"
-          class="btn btn-link text-black text-decoration-none"
+        <button
+          class="btn border-light dropdown-toggle d-flex justify-content-center align-items-center px-3 py-2"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
-          <i class="bi bi-chat-dots text-gray-800 fs-4"></i>
-        </a>
+          <img [src]="currentFlag" class="me-2" />
+        </button>
+        <ul class="dropdown-menu rounded-0">
+          <li
+            class="d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="d-flex align-items-center">
+              <img src="../../../assets/images/utilities/it.svg" />
+            </div>
+            <img
+              *ngIf="currentFlag === '../../../assets/images/utilities/it.svg'"
+              src="../../../assets/images/utilities/check.svg"
+            />
+          </li>
+          <li
+            class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="d-flex align-items-center">
+              <img src="../../../assets/images/utilities/en.svg" />
+            </div>
+            <img
+              *ngIf="currentFlag === '../../../assets/images/utilities/en.svg'"
+              src="../../../assets/images/utilities/check.svg"
+            />
+          </li>
+        </ul>
       </div>
 
       <div class="col-xxl-2 col-md-3 col-7 text-md-start text-center">
