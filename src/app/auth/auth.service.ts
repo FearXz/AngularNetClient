@@ -6,18 +6,21 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginResponse } from './Interfaces/LoginResponse';
 import { LoginRequest } from './Interfaces/LoginRequest';
 import { firstValueFrom, Observable } from 'rxjs';
-import { AUTH } from '../utils/const';
 import { PersistService } from '../services/persistService.service';
 import { RefreshRequest } from './Interfaces/Refreshequest';
 import { RefreshResponse } from './Interfaces/RefreshResponse';
-import { UserClaims } from './Interfaces/UserClaims';
-import { LoggedUser } from './Interfaces/LoggedUser';
+import { UserClaims } from './Interfaces/IUserClaims';
+import { LoggedUser } from './Interfaces/ILoggedUser';
+import { Store } from '../utils/Store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private _userData = this.persistSvc.PSignal<LoggedUser | null>(AUTH, null);
+  private _userData = this.persistSvc.PSignal<LoggedUser | null>(
+    Store.AUTH,
+    null
+  );
 
   loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
   registerUrl: string = `${environment.apiUrl}/api/Auth/registerUser`;

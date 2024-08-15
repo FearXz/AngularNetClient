@@ -1,5 +1,4 @@
 import { Injectable, WritableSignal, signal, effect } from '@angular/core';
-import { PStore } from '../Interfaces/Store';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +24,7 @@ export class PersistService {
     return store ? JSON.parse(store) : {};
   }
 
-  private saveStore(store: PStore): void {
+  private saveStore(store: any): void {
     localStorage.setItem(this.key, JSON.stringify(store));
   }
 }

@@ -1,11 +1,3 @@
-/**Role */
-export const ADMIN: string = 'ADMIN';
-export const USER: string = 'USER';
-export const COMPANY: string = 'COMPANY';
-
-/**Store Object*/
-export const AUTH = 'auth';
-
 /**Constant*/
 export const DASHBOARD: string = 'DASHBOARD';
 export const PROFILO: string = 'PROFILO';
