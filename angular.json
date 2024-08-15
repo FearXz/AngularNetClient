@@ -25,7 +25,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/assets/bootstrap/bootstrap.min.scss",
+              "src/assets/bootstrap/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": [
