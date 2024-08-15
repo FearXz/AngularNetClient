@@ -18,7 +18,7 @@ export const authInterceptor: HttpInterceptorFn = (
   const authSvc = inject(AuthService);
   const router = inject(Router);
 
-  const auth = authSvc.auth();
+  const auth = authSvc.userData();
 
   let authReq = req;
   if (auth) {
@@ -37,7 +37,8 @@ export const authInterceptor: HttpInterceptorFn = (
           .pipe(
             switchMap((refResp) => {
               if (refResp) {
-                authSvc.setAuth(refResp);
+                let claims = authSvc.getClaims(refResp);
+                authSvc.setUserData(refResp);
                 const clonedReq = req.clone({
                   setHeaders: {
                     Authorization: `Bearer ${refResp.accessToken}`,

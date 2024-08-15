@@ -10,12 +10,14 @@ import { AUTH } from '../utils/const';
 import { PersistService } from '../services/persistService.service';
 import { RefreshRequest } from './Interfaces/Refreshequest';
 import { RefreshResponse } from './Interfaces/RefreshResponse';
+import { UserClaims } from './Interfaces/UserClaims';
+import { LoggedUser } from './Interfaces/LoggedUser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private _auth = this.persistSvc.PSignal<LoginResponse | null>(AUTH, null);
+  private _userData = this.persistSvc.PSignal<LoggedUser | null>(AUTH, null);
 
   loginUrl: string = `${environment.apiUrl}api/Auth/login`;
   registerUrl: string = `${environment.apiUrl}api/Auth/register`;
@@ -28,18 +30,15 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {}
 
-  get auth(): Signal<LoginResponse | null> {
-    return this._auth.asReadonly();
-  }
-
-  setAuth(auth: LoginResponse) {
-    this._auth.set(auth);
+  get userData(): Signal<LoggedUser | null> {
+    return this._userData.asReadonly();
   }
 
   login(login: LoginRequest): void {
     firstValueFrom(this.http.post<LoginResponse>(this.loginUrl, login))
-      .then((response) => {
-        this._auth.set(response);
+      .then((resp) => {
+        if (!resp) throw new Error('No Claims');
+        this.setUserData(resp);
       })
       .catch((error) => {
         console.error('Error logging in', error);
@@ -59,12 +58,39 @@ export class AuthService {
   }
 
   logout(): void {
-    this._auth.set(null);
+    this._userData.set(null);
   }
 
-  // metodo per verificare se l'utente è loggato
+  setUserData(login: LoginResponse): void {
+    let claims: UserClaims = this.getClaims(login);
 
-  // metodo per ottenere l'utente loggato
+    if (!claims) throw new Error('No Claims');
 
-  // metodo per ottenere l'accessToken
+    const user: LoggedUser = {
+      accessToken: login.accessToken,
+      refreshToken: login.refreshToken,
+      userId: claims.userId,
+      displayName: claims.displayName,
+      role: claims.role,
+    };
+
+    this._userData.set(user);
+  }
+
+  // metodo per ottenere i claims dell'utente loggato
+  getClaims(login: LoginResponse): UserClaims {
+    const token = login?.accessToken;
+    if (!token) throw new Error('No Token');
+
+    let claims = this.jwtHelper.decodeToken(token);
+    if (!claims) throw new Error('No Claims');
+
+    const decodedToken: UserClaims = {
+      userId: claims.nameid,
+      displayName: claims.unique_name,
+      role: claims.role,
+    };
+
+    return decodedToken;
+  }
 }
