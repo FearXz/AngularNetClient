@@ -22,9 +22,9 @@ export class AuthService {
     null
   );
 
-  loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
-  registerUrl: string = `${environment.apiUrl}/api/Auth/registerUser`;
-  refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshToken`;
+  loginUrl: string = `${environment.apiUrl}/api/Auth/loginuser`;
+  registerUrl: string = `${environment.apiUrl}/api/Auth/registeruser`;
+  refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshtoken`;
 
   constructor(
     private http: HttpClient,
